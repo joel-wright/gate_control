@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Gate Control</title>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    </head>
+    <body>
+        <button name="toggle" onclick="toggle();">Open/Close</button>
+        <img src="/static/gate.jpg" id="gate_image" alt="gate"/>
+        <script>
+            setInterval(function() {
+                var myImageElement = document.getElementById('gate_image');
+                myImageElement.src = '/static/gate.jpg?rand=' + Math.random();
+            }, 500);
+
+            function toggle(){
+                var form = document.createElement('form');
+                $.ajax({
+                    url:'toggle',
+                    type:'post',
+                    data:$(form).serialize(),
+                    success:function(){}
+                });
+            }
+        </script>
+    </body>
+</html>
