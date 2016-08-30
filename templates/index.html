@@ -9,10 +9,14 @@
         <button name="toggle" onclick="toggle();">Open/Close</button>
         <img src="/static/gate.jpg" id="gate_image" alt="gate"/>
         <script>
-            setInterval(function() {
-                var myImageElement = document.getElementById('gate_image');
-                myImageElement.src = '/static/gate.jpg?rand=' + Math.random();
-            }, 500);
+            function load_image(){
+                setTimeout(function() {
+                    var myImageElement = document.getElementById('gate_image');
+                    myImageElement.src = '/static/gate.jpg?rand=' + Math.random();
+                    load_image();
+                }, 500);
+            };
+            load_image()
 
             function toggle(){
                 var form = document.createElement('form');
